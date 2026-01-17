@@ -1,0 +1,389 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.app.work {
+  background: #E63946;
+}
+
+.app.shortBreak {
+  background: #F1C40F;
+}
+
+.app.longBreak {
+  background: #457B9D;
+}
+
+/* Dark Mode Styles */
+.app.dark.work {
+  background: #8B1E1E;
+}
+
+.app.dark.shortBreak {
+  background: #9A7D0A;
+}
+
+.app.dark.longBreak {
+  background: #1C3D5A;
+}
+
+.app.dark .title {
+  color: #F8F8F8;
+}
+
+.app.dark .mode-selector {
+  border-color: #F8F8F8;
+}
+
+.app.dark .mode-btn {
+  background: #2D2D2D;
+  color: #F8F8F8;
+  border-right-color: #F8F8F8;
+}
+
+.app.dark .mode-btn:hover {
+  background: #F8F8F8;
+  color: #1D1D1D;
+}
+
+.app.dark .mode-btn.active {
+  background: #F8F8F8;
+  color: #1D1D1D;
+}
+
+.app.dark .timer-display {
+  background: #2D2D2D;
+  border-color: #F8F8F8;
+}
+
+.app.dark .mode-label {
+  color: #F8F8F8;
+}
+
+.app.dark .time {
+  color: #F8F8F8;
+}
+
+.app.dark .progress-bar {
+  background: #1D1D1D;
+}
+
+.app.dark .progress-fill {
+  background: #F8F8F8;
+}
+
+.app.dark .control-btn {
+  border-color: #F8F8F8;
+}
+
+.app.dark .control-btn.primary {
+  background: #F8F8F8;
+  color: #1D1D1D;
+}
+
+.app.dark .control-btn.primary:hover {
+  background: #2D2D2D;
+  color: #F8F8F8;
+}
+
+.app.dark .control-btn.secondary {
+  background: #2D2D2D;
+  color: #F8F8F8;
+}
+
+.app.dark .control-btn.secondary:hover {
+  background: #444444;
+  color: #F8F8F8;
+}
+
+.app.dark .sessions {
+  color: #F8F8F8;
+}
+
+.app.dark .sessions-count {
+  background: #2D2D2D;
+  border-color: #F8F8F8;
+}
+
+.app.dark .dark-mode-toggle {
+  background: #2D2D2D;
+  color: #F8F8F8;
+  border-color: #F8F8F8;
+}
+
+.app.dark .dark-mode-toggle:hover {
+  background: #F8F8F8;
+  color: #1D1D1D;
+}
+
+.container {
+  text-align: center;
+  padding: 2rem;
+  max-width: 600px;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.title {
+  color: #1D1D1D;
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.dark-mode-toggle {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #F8F8F8;
+  border: 4px solid #1D1D1D;
+  color: #1D1D1D;
+  font-size: 1.5rem;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-mode-toggle:hover {
+  background: #1D1D1D;
+  color: #F8F8F8;
+}
+
+.mode-selector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-bottom: 4rem;
+  border: 4px solid #1D1D1D;
+}
+
+.mode-btn {
+  padding: 1rem;
+  border: none;
+  border-right: 4px solid #1D1D1D;
+  background: #F8F8F8;
+  color: #1D1D1D;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mode-btn:last-child {
+  border-right: none;
+}
+
+.mode-btn:hover {
+  background: #1D1D1D;
+  color: #F8F8F8;
+}
+
+.mode-btn.active {
+  background: #1D1D1D;
+  color: #F8F8F8;
+}
+
+.app.work .mode-btn.active {
+  background: #1D1D1D;
+}
+
+.app.shortBreak .mode-btn.active {
+  background: #1D1D1D;
+}
+
+.app.longBreak .mode-btn.active {
+  background: #1D1D1D;
+}
+
+.timer-display {
+  position: relative;
+  margin-bottom: 4rem;
+  background: #F8F8F8;
+  border: 6px solid #1D1D1D;
+  padding: 3rem 2rem;
+}
+
+.mode-label {
+  color: #1D1D1D;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.time {
+  font-size: 7rem;
+  font-weight: 900;
+  color: #1D1D1D;
+  line-height: 1;
+  margin-bottom: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: #D9D9D9;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #1D1D1D;
+  transition: width 1s linear;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 0;
+  margin-bottom: 3rem;
+}
+
+.control-btn {
+  padding: 1.25rem 2rem;
+  border: 4px solid #1D1D1D;
+  border-right: none;
+  font-size: 1.125rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.control-btn:last-child {
+  border-right: 4px solid #1D1D1D;
+}
+
+.control-btn.primary {
+  background: #1D1D1D;
+  color: #F8F8F8;
+}
+
+.control-btn.primary:hover {
+  background: #F8F8F8;
+  color: #1D1D1D;
+}
+
+.control-btn.secondary {
+  background: #F8F8F8;
+  color: #1D1D1D;
+}
+
+.control-btn.secondary:hover {
+  background: #D9D9D9;
+  color: #1D1D1D;
+}
+
+.sessions {
+  color: #1D1D1D;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sessions-count {
+  background: #F8F8F8;
+  padding: 1rem 2rem;
+  border: 4px solid #1D1D1D;
+  display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .time {
+    font-size: 4.5rem;
+  }
+
+  .timer-display {
+    padding: 2rem 1rem;
+  }
+
+  .mode-selector {
+    grid-template-columns: 1fr;
+    margin-bottom: 3rem;
+  }
+
+  .mode-btn {
+    border-right: none;
+    border-bottom: 4px solid;
+  }
+
+  .mode-btn:last-child {
+    border-bottom: none;
+  }
+
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .control-btn {
+    border-right: 4px solid;
+    border-bottom: none;
+  }
+
+  .control-btn:last-child {
+    border-bottom: 4px solid;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  .dark-mode-toggle {
+    position: static;
+    transform: none;
+    margin-top: 1rem;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
