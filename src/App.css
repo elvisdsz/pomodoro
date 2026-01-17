@@ -221,14 +221,17 @@ body {
 
 .app.work .mode-btn.active {
   background: #1D1D1D;
+  color: #F8F8F8;
 }
 
 .app.shortBreak .mode-btn.active {
   background: #1D1D1D;
+  color: #F8F8F8;
 }
 
 .app.longBreak .mode-btn.active {
   background: #1D1D1D;
+  color: #F8F8F8;
 }
 
 .timer-display {
