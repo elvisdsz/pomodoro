@@ -60,7 +60,7 @@ body {
 }
 
 .app.dark .mode-btn:hover {
-  background: #F8F8F8;
+  background: #d7d7d7;
   color: #1D1D1D;
 }
 
@@ -94,24 +94,19 @@ body {
   border-color: #F8F8F8;
 }
 
-.app.dark .control-btn.primary {
-  background: #F8F8F8;
+.app.dark .control-btn {
+  background: #1D1D1D;
+  color: #F8F8F8;
+}
+
+.app.dark .control-btn:hover {
+  background: #d7d7d7;
   color: #1D1D1D;
 }
 
-.app.dark .control-btn.primary:hover {
-  background: #2D2D2D;
-  color: #F8F8F8;
-}
-
-.app.dark .control-btn.secondary {
-  background: #2D2D2D;
-  color: #F8F8F8;
-}
-
-.app.dark .control-btn.secondary:hover {
-  background: #444444;
-  color: #F8F8F8;
+.app.dark .control-btn.pressed {
+  background: #F8F8F8;
+  color: #1D1D1D;
 }
 
 .app.dark .sessions {
@@ -130,7 +125,7 @@ body {
 }
 
 .app.dark .dark-mode-toggle:hover {
-  background: #F8F8F8;
+  background: #d7d7d7;
   color: #1D1D1D;
 }
 
@@ -219,17 +214,7 @@ body {
   color: #F8F8F8;
 }
 
-.app.work .mode-btn.active {
-  background: #1D1D1D;
-  color: #F8F8F8;
-}
-
-.app.shortBreak .mode-btn.active {
-  background: #1D1D1D;
-  color: #F8F8F8;
-}
-
-.app.longBreak .mode-btn.active {
+.app .mode-btn.active {
   background: #1D1D1D;
   color: #F8F8F8;
 }
@@ -299,28 +284,18 @@ body {
   border-right: 4px solid #1D1D1D;
 }
 
-.control-btn.primary {
+.control-btn {
   background: #F8F8F8;
   color: #1D1D1D;
 }
 
-.control-btn.primary:hover {
+.control-btn:hover {
   background: #464646;
   color: #F8F8F8;
 }
 
-.control-btn.primary.pressed {
+.control-btn.pressed {
   background: #1D1D1D;
-  color: #F8F8F8;
-}
-
-.control-btn.secondary {
-  background: #F8F8F8;
-  color: #1D1D1D;
-}
-
-.control-btn.secondary:hover {
-  background: #464646;
   color: #F8F8F8;
 }
 
