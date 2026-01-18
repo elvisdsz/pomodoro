@@ -124,12 +124,23 @@ function App() {
 
   return (
     <div className={`app ${mode} ${isDarkMode ? 'dark' : ''}`}>
+      <div className="dark-mode-toggle">
+        <button
+          className={`theme-btn ${!isDarkMode ? 'active' : ''}`}
+          onClick={() => setIsDarkMode(false)}
+        >
+          Light
+        </button>
+        <button
+          className={`theme-btn ${isDarkMode ? 'active' : ''}`}
+          onClick={() => setIsDarkMode(true)}
+        >
+          Dark
+        </button>
+      </div>
       <div className="container">
         <div className="header">
           <h1 className="title">POMODORO</h1>
-          <button className="dark-mode-toggle" onClick={() => setIsDarkMode(!isDarkMode)}>
-            {isDarkMode ? '☀' : '☾'}
-          </button>
         </div>
 
         <div className="mode-selector">
