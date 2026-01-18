@@ -178,7 +178,7 @@ body {
 }
 
 .dark-mode-toggle:hover {
-  background: #1D1D1D;
+  background: #464646;
   color: #F8F8F8;
 }
 
@@ -210,7 +210,7 @@ body {
 }
 
 .mode-btn:hover {
-  background: #1D1D1D;
+  background: #464646;
   color: #F8F8F8;
 }
 
@@ -300,13 +300,18 @@ body {
 }
 
 .control-btn.primary {
-  background: #1D1D1D;
-  color: #F8F8F8;
+  background: #F8F8F8;
+  color: #1D1D1D;
 }
 
 .control-btn.primary:hover {
-  background: #F8F8F8;
-  color: #1D1D1D;
+  background: #464646;
+  color: #F8F8F8;
+}
+
+.control-btn.primary.pressed {
+  background: #1D1D1D;
+  color: #F8F8F8;
 }
 
 .control-btn.secondary {
@@ -315,8 +320,8 @@ body {
 }
 
 .control-btn.secondary:hover {
-  background: #D9D9D9;
-  color: #1D1D1D;
+  background: #464646;
+  color: #F8F8F8;
 }
 
 .sessions {

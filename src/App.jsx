@@ -167,7 +167,7 @@ function App() {
         </div>
 
         <div className="controls">
-          <button className="control-btn primary" onClick={toggleTimer}>
+          <button className={`control-btn primary${isRunning ? ' pressed' : ''}`} onClick={toggleTimer}>
             {isRunning ? 'Pause' : 'Start'}
           </button>
           <button className="control-btn secondary" onClick={resetTimer}>
