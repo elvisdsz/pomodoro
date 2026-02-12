@@ -8,6 +8,7 @@ function App() {
   const [mode, setMode] = useState('work')
   const [timeLeft, setTimeLeft] = useState(WORK_TIME)
   const [isRunning, setIsRunning] = useState(false)
+  const [hasStarted, setHasStarted] = useState(false)
   const [sessions, setSessions] = useState(0)
   const [isDarkMode, setIsDarkMode] = useState(false)
   const intervalRef = useRef(null)
@@ -45,6 +46,7 @@ function App() {
 
   const switchMode = (newMode) => {
     setMode(newMode)
+    setHasStarted(false)
     switch (newMode) {
       case 'work':
         setTimeLeft(WORK_TIME)
@@ -96,12 +98,14 @@ function App() {
   const toggleTimer = () => {
     if (!isRunning) {
       requestNotificationPermission()
+      setHasStarted(true)
     }
     setIsRunning(!isRunning)
   }
 
   const resetTimer = () => {
     setIsRunning(false)
+    setHasStarted(false)
     setTimeLeft(mode === 'work' ? WORK_TIME : mode === 'shortBreak' ? SHORT_BREAK : LONG_BREAK)
   }
 
@@ -179,7 +183,7 @@ function App() {
 
         <div className="controls">
           <button className={`control-btn primary${isRunning ? ' pressed' : ''}`} onClick={toggleTimer}>
-            {isRunning ? 'Pause' : 'Start'}
+            {isRunning ? 'Pause' : (hasStarted ? 'Resume' : 'Start')}
           </button>
           <button className="control-btn secondary" onClick={resetTimer}>
             Reset
