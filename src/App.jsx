@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import RainSoundToggle from './RainSoundToggle'
 
 const WORK_TIME = 25 * 60
 const SHORT_BREAK = 5 * 60
@@ -128,6 +129,7 @@ function App() {
 
   return (
     <div className={`app ${mode} ${isDarkMode ? 'dark' : ''}`}>
+      <RainSoundToggle isPlaying={isRunning && mode === 'work'} />
       <div className="dark-mode-toggle">
         <button
           className={`theme-btn ${!isDarkMode ? 'active' : ''}`}
