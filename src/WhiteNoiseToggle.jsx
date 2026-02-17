@@ -23,9 +23,14 @@ const WHITE_NOISE_SOUNDS = [
     filePath: '/sounds/soft-rain-loop.ogg',
     startTime: 0,
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2v4M8 4v3M16 4v3M12 14v7M8 16v5M16 16v5" />
-        <circle cx="12" cy="10" r="3" fill="currentColor" />
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
+        <path d="M8 19v1" />
+        <path d="M8 14v1" />
+        <path d="M16 19v1" />
+        <path d="M16 14v1" />
+        <path d="M12 21v1" />
+        <path d="M12 16v1" />
       </svg>
     )
   },
@@ -35,9 +40,11 @@ const WHITE_NOISE_SOUNDS = [
     filePath: '/sounds/ambiance-heavy-rain-loop.wav',
     startTime: 0,
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2v5M8 3v5M16 3v5M12 14v8M8 15v7M16 15v7M4 16v6M20 16v6" />
-        <ellipse cx="12" cy="9" rx="4" ry="2" fill="currentColor" />
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
+        <path d="M16 14v6" />
+        <path d="M8 14v6" />
+        <path d="M12 16v6" />
       </svg>
     )
   },
@@ -47,10 +54,9 @@ const WHITE_NOISE_SOUNDS = [
     filePath: '/sounds/thunderstorm-with-rain-and-traffic-loop.wav',
     startTime: [6, 21, 58, 63, 114, 273],
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2v4M8 3v3M16 3v3M8 14v4M16 14v4" />
-        <path d="M13 10h-2l-2 6h2l-2 6 5-8h-2l3-4z" fill="currentColor" />
-        <ellipse cx="12" cy="8" rx="4" ry="2" fill="currentColor" />
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M6 16.326A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 .5 8.973" />
+        <path d="m13 12-3 5h4l-3 5" />
       </svg>
     )
   }
