@@ -37,7 +37,7 @@ const WHITE_NOISE_SOUNDS = [
   {
     id: 'pour',
     label: 'POUR',
-    filePath: '/sounds/ambiance-heavy-rain-loop.wav',
+    filePath: '/sounds/ambiance-heavy-rain-loop.ogg',
     startTime: 0,
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -51,7 +51,7 @@ const WHITE_NOISE_SOUNDS = [
   {
     id: 'storm',
     label: 'STORM',
-    filePath: '/sounds/thunderstorm-with-rain-and-traffic-loop.wav',
+    filePath: '/sounds/thunderstorm-with-rain-and-traffic-loop.ogg',
     startTime: [6, 21, 58, 63, 114, 273],
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
