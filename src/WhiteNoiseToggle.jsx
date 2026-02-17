@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 
-// Configuration for rain sounds - easily add new sounds here
+// Configuration for rain sounds as white noise
 // startTime (in seconds) can be:
 //   - A number (e.g., 5) - always starts at 5 seconds into the audio
 //   - An array (e.g., [0, 10, 20]) - randomly picks one position each time
 //   - Omitted/null - defaults to 0 (beginning of audio)
-const RAIN_SOUNDS = [
+const WHITE_NOISE_SOUNDS = [
   {
     id: 'off',
     label: 'OFF',
@@ -56,7 +56,7 @@ const RAIN_SOUNDS = [
   }
 ]
 
-function RainSoundToggle({ isPlaying }) {
+function WhiteNoiseToggle({ isPlaying }) {
   const [currentSoundIndex, setCurrentSoundIndex] = useState(0)
   const audioRef = useRef(null)
 
@@ -73,9 +73,9 @@ function RainSoundToggle({ isPlaying }) {
     return startTime
   }
 
-  // Manage rain sound audio playback
+  // Manage white noise audio playback
   useEffect(() => {
-    const currentSound = RAIN_SOUNDS[currentSoundIndex]
+    const currentSound = WHITE_NOISE_SOUNDS[currentSoundIndex]
     const shouldPlaySound = isPlaying && currentSound.id !== 'off' && currentSound.filePath
 
     if (shouldPlaySound) {
@@ -133,11 +133,11 @@ function RainSoundToggle({ isPlaying }) {
   }, [isPlaying, currentSoundIndex])
 
   const cycleSoundMode = () => {
-    const nextIndex = (currentSoundIndex + 1) % RAIN_SOUNDS.length
+    const nextIndex = (currentSoundIndex + 1) % WHITE_NOISE_SOUNDS.length
     setCurrentSoundIndex(nextIndex)
   }
 
-  const currentSound = RAIN_SOUNDS[currentSoundIndex]
+  const currentSound = WHITE_NOISE_SOUNDS[currentSoundIndex]
 
   return (
     <div className="sound-toggle">
@@ -153,4 +153,4 @@ function RainSoundToggle({ isPlaying }) {
   )
 }
 
-export default RainSoundToggle
+export default WhiteNoiseToggle
