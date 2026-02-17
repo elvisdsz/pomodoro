@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import WhiteNoiseToggle from './WhiteNoiseToggle'
+import { BackgroundRain, WindowRain } from './RainEffects'
 
 const WORK_TIME = 25 * 60
 const SHORT_BREAK = 5 * 60
@@ -11,8 +12,9 @@ function App() {
   const [isRunning, setIsRunning] = useState(false)
   const [hasStarted, setHasStarted] = useState(false)
   const [sessions, setSessions] = useState(0)
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [theme, setTheme] = useState('rain')
   const intervalRef = useRef(null)
+  const isRain = theme === 'rain'
 
   useEffect(() => {
     if (isRunning && timeLeft > 0) {
@@ -128,20 +130,22 @@ function App() {
   }
 
   return (
-    <div className={`app ${mode} ${isDarkMode ? 'dark' : ''}`}>
+    <div className={`app ${mode} ${theme}`}>
+      {isRain && <BackgroundRain active={isRunning} />}
+
       <WhiteNoiseToggle isPlaying={isRunning && mode === 'work'} />
-      <div className="dark-mode-toggle">
+      <div className="theme-toggle">
         <button
-          className={`theme-btn ${!isDarkMode ? 'active' : ''}`}
-          onClick={() => setIsDarkMode(false)}
+          className={`theme-btn ${theme === 'minimal' ? 'active' : ''}`}
+          onClick={() => setTheme('minimal')}
         >
-          Light
+          Minimal
         </button>
         <button
-          className={`theme-btn ${isDarkMode ? 'active' : ''}`}
-          onClick={() => setIsDarkMode(true)}
+          className={`theme-btn ${theme === 'rain' ? 'active' : ''}`}
+          onClick={() => setTheme('rain')}
         >
-          Dark
+          Rain
         </button>
       </div>
       <div className="container">
@@ -171,6 +175,7 @@ function App() {
         </div>
 
         <div className="timer-display">
+          {isRain && <WindowRain active={isRunning} />}
           <div className="mode-label">{getModeLabel()}</div>
           <div className="time">{formatTime(timeLeft)}</div>
           <div className="progress-bar">

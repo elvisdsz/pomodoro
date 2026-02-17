@@ -10,191 +10,218 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ===== App & Background ===== */
+
 .app {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.3s ease;
+  transition: background 0.5s ease;
   position: relative;
   overflow: hidden;
 }
 
 .app.work {
-  background: #E63946;
+  background: linear-gradient(180deg, #0e1620 0%, #0c141e 50%, #0a121c 100%);
 }
 
 .app.shortBreak {
-  background: #F1C40F;
+  background: linear-gradient(180deg, #0f1a24 0%, #0d1822 50%, #0b1620 100%);
 }
 
 .app.longBreak {
-  background: #457B9D;
+  background: linear-gradient(180deg, #0b1018 0%, #090e16 50%, #070c14 100%);
 }
 
-/* Dark Mode Styles */
-.app.dark.work {
-  background: #8B1E1E;
+/* ===== Background Rain ===== */
+
+.rain-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.8s ease;
 }
 
-.app.dark.shortBreak {
-  background: #9A7D0A;
+.rain-container.active {
+  opacity: 1;
 }
 
-.app.dark.longBreak {
-  background: #1C3D5A;
+.raindrop {
+  position: absolute;
+  top: -30px;
+  width: 1.5px;
+  background: linear-gradient(to bottom, transparent, rgba(160, 190, 220, 0.5));
+  border-radius: 0 0 1px 1px;
+  animation: rainFall linear infinite;
 }
 
-.app.dark .title {
-  color: #F8F8F8;
+@keyframes rainFall {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(100vh + 30px));
+  }
 }
 
-.app.dark .mode-selector {
-  border-color: #F8F8F8;
+/* ===== Window Drops (on timer) ===== */
+
+.window-drops {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.8s ease;
 }
 
-.app.dark .mode-btn {
-  background: #2D2D2D;
-  color: #F8F8F8;
-  border-right-color: #F8F8F8;
+.window-drops.active {
+  opacity: 1;
 }
 
-.app.dark .mode-btn:hover {
-  background: #d7d7d7;
-  color: #1D1D1D;
+.window-drop {
+  position: absolute;
+  top: -8%;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(
+    circle,
+    rgba(180, 210, 235, 0.55) 0%,
+    rgba(180, 210, 235, 0.25) 40%,
+    transparent 70%
+  );
+  border-radius: 50% 50% 50% 40%;
+  animation: windowDrip linear infinite;
+  z-index: 1;
 }
 
-.app.dark .mode-btn.active {
-  background: #F8F8F8;
-  color: #1D1D1D;
+.window-drop::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.5px;
+  height: 18px;
+  background: linear-gradient(
+    to top,
+    rgba(180, 210, 235, 0.2),
+    transparent
+  );
+  border-radius: 1px;
 }
 
-.app.dark .timer-display {
-  background: #2D2D2D;
-  border-color: #F8F8F8;
+@keyframes windowDrip {
+  0% {
+    top: -8%;
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0.6;
+  }
+  100% {
+    top: 108%;
+    opacity: 0;
+  }
 }
 
-.app.dark .mode-label {
-  color: #F8F8F8;
-}
-
-.app.dark .time {
-  color: #F8F8F8;
-}
-
-.app.dark .progress-bar {
-  background: #1D1D1D;
-}
-
-.app.dark .progress-fill {
-  background: #F8F8F8;
-}
-
-.app.dark .control-btn {
-  border-color: #F8F8F8;
-}
-
-.app.dark .control-btn {
-  background: #1D1D1D;
-  color: #F8F8F8;
-}
-
-.app.dark .control-btn:hover {
-  background: #d7d7d7;
-  color: #1D1D1D;
-}
-
-.app.dark .control-btn.pressed {
-  background: #F8F8F8;
-  color: #1D1D1D;
-}
-
-.app.dark .sessions {
-  color: #F8F8F8;
-}
-
-.app.dark .sessions-count {
-  border-bottom-color: #F8F8F8;
-}
-
-.app.dark .dark-mode-toggle {
-  border-color: #F8F8F8;
-}
-
-.app.dark .theme-btn {
-  background: #2D2D2D;
-  color: #F8F8F8;
-  border-right-color: #F8F8F8;
-}
-
-.app.dark .theme-btn:hover {
-  background: #d7d7d7;
-  color: #1D1D1D;
-}
-
-.app.dark .theme-btn.active {
-  background: #F8F8F8;
-  color: #1D1D1D;
-}
-
-.app.dark .sound-toggle {
-  border-color: #F8F8F8;
-}
-
-.app.dark .sound-btn {
-  background: #2D2D2D;
-  color: #F8F8F8;
-}
-
-.app.dark .sound-btn:hover {
-  background: #d7d7d7;
-  color: #1D1D1D;
-}
+/* ===== Container ===== */
 
 .container {
   text-align: center;
   padding: 2rem;
   max-width: 600px;
   position: relative;
+  z-index: 2;
 }
+
+/* ===== Header ===== */
 
 .header {
   margin-bottom: 3rem;
 }
 
 .title {
-  color: #1D1D1D;
+  color: #c8dce8;
   font-size: 3rem;
   font-weight: 900;
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-.dark-mode-toggle {
+/* ===== Theme Toggle ===== */
+
+.theme-toggle {
   position: fixed;
   top: 2rem;
   right: 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
-  border: 4px solid #1D1D1D;
+  border: 3px solid #3d5a70;
   z-index: 1000;
 }
+
+.theme-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-right: 3px solid #3d5a70;
+  background: rgba(140, 170, 200, 0.1);
+  color: #728fa3;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.theme-btn:last-child {
+  border-right: none;
+}
+
+.theme-btn:hover {
+  background: rgba(140, 170, 200, 0.2);
+  color: #c8dce8;
+}
+
+.theme-btn.active {
+  background: rgba(140, 170, 200, 0.25);
+  color: #e0eaf2;
+}
+
+/* ===== Sound Toggle ===== */
 
 .sound-toggle {
   position: fixed;
   top: 2rem;
   left: 2rem;
-  border: 4px solid #1D1D1D;
+  border: 3px solid #3d5a70;
   z-index: 1000;
 }
 
 .sound-btn {
   padding: 0.5rem 1rem;
   border: none;
-  background: #F8F8F8;
-  color: #1D1D1D;
+  background: rgba(140, 170, 200, 0.1);
+  color: #728fa3;
   font-size: 0.7rem;
   font-weight: 700;
   cursor: pointer;
@@ -208,8 +235,8 @@ body {
 }
 
 .sound-btn:hover {
-  background: #464646;
-  color: #F8F8F8;
+  background: rgba(140, 170, 200, 0.2);
+  color: #c8dce8;
 }
 
 .sound-icon {
@@ -244,49 +271,22 @@ body {
   font-size: 0.75rem;
 }
 
-.theme-btn {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-right: 4px solid #1D1D1D;
-  background: #F8F8F8;
-  color: #1D1D1D;
-  font-size: 0.8rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: 'Inter', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.theme-btn:last-child {
-  border-right: none;
-}
-
-.theme-btn:hover {
-  background: #464646;
-  color: #F8F8F8;
-}
-
-.theme-btn.active {
-  background: #1D1D1D;
-  color: #F8F8F8;
-}
+/* ===== Mode Selector ===== */
 
 .mode-selector {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
   margin-bottom: 4rem;
-  border: 4px solid #1D1D1D;
+  border: 3px solid #3d5a70;
 }
 
 .mode-btn {
   padding: 1rem;
   border: none;
-  border-right: 4px solid #1D1D1D;
-  background: #F8F8F8;
-  color: #1D1D1D;
+  border-right: 3px solid #3d5a70;
+  background: rgba(140, 170, 200, 0.08);
+  color: #728fa3;
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
@@ -301,44 +301,80 @@ body {
 }
 
 .mode-btn:hover {
-  background: #464646;
-  color: #F8F8F8;
+  background: rgba(140, 170, 200, 0.18);
+  color: #c8dce8;
 }
 
 .mode-btn.active {
-  background: #1D1D1D;
-  color: #F8F8F8;
+  background: rgba(140, 170, 200, 0.25);
+  color: #e0eaf2;
 }
 
-.app .mode-btn.active {
-  background: #1D1D1D;
-  color: #F8F8F8;
-}
+/* ===== Timer Display — The Window ===== */
 
 .timer-display {
   position: relative;
   margin-bottom: 4rem;
-  background: #F8F8F8;
-  border: 6px solid #1D1D1D;
+  background: linear-gradient(
+    180deg,
+    rgba(100, 145, 185, 0.12) 0%,
+    rgba(80, 125, 165, 0.06) 35%,
+    rgba(70, 115, 155, 0.04) 60%,
+    rgba(80, 125, 165, 0.10) 100%
+  );
+  border: 6px solid #3d5a70;
   padding: 3rem 2rem;
+  overflow: hidden;
+  box-shadow:
+    inset 0 1px 0 rgba(160, 190, 220, 0.08),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15),
+    0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Condensation / mist overlay on the window glass */
+.timer-display::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(
+      ellipse at 30% 20%,
+      rgba(140, 175, 210, 0.06) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 70% 80%,
+      rgba(140, 175, 210, 0.04) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: 0;
 }
 
 .mode-label {
-  color: #1D1D1D;
+  color: #728fa3;
   font-size: 1rem;
   font-weight: 700;
   margin-bottom: 2rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
+  position: relative;
+  z-index: 2;
 }
 
 .time {
   font-size: 7rem;
   font-weight: 900;
-  color: #1D1D1D;
+  color: #d0dfe8;
   line-height: 1;
   margin-bottom: 0;
   font-variant-numeric: tabular-nums;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
 }
 
 .progress-bar {
@@ -347,14 +383,17 @@ body {
   left: 0;
   width: 100%;
   height: 12px;
-  background: #D9D9D9;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 2;
 }
 
 .progress-fill {
   height: 100%;
-  background: #1D1D1D;
+  background: linear-gradient(90deg, #4a8ea5, #6ab0c8);
   transition: width 1s linear;
 }
+
+/* ===== Controls ===== */
 
 .controls {
   display: grid;
@@ -365,7 +404,7 @@ body {
 
 .control-btn {
   padding: 1.25rem 2rem;
-  border: 4px solid #1D1D1D;
+  border: 3px solid #3d5a70;
   border-right: none;
   font-size: 1.125rem;
   font-weight: 700;
@@ -374,29 +413,28 @@ body {
   font-family: 'Inter', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  background: rgba(140, 170, 200, 0.08);
+  color: #728fa3;
 }
 
 .control-btn:last-child {
-  border-right: 4px solid #1D1D1D;
-}
-
-.control-btn {
-  background: #F8F8F8;
-  color: #1D1D1D;
+  border-right: 3px solid #3d5a70;
 }
 
 .control-btn:hover {
-  background: #464646;
-  color: #F8F8F8;
+  background: rgba(140, 170, 200, 0.18);
+  color: #c8dce8;
 }
 
 .control-btn.pressed {
-  background: #1D1D1D;
-  color: #F8F8F8;
+  background: rgba(140, 170, 200, 0.25);
+  color: #e0eaf2;
 }
 
+/* ===== Sessions ===== */
+
 .sessions {
-  color: #1D1D1D;
+  color: #728fa3;
   font-size: 1.125rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -405,9 +443,142 @@ body {
 
 .sessions-count {
   padding: 0.75rem 0;
-  border-bottom: 3px solid #1D1D1D;
+  border-bottom: 3px solid #3d5a70;
   display: inline-block;
 }
+
+/* ===== Minimal Theme Overrides (original pomodoro colors) ===== */
+
+.app.minimal.work {
+  background: #E63946;
+}
+
+.app.minimal.shortBreak {
+  background: #F1C40F;
+}
+
+.app.minimal.longBreak {
+  background: #457B9D;
+}
+
+.app.minimal .title {
+  color: #1D1D1D;
+  text-shadow: none;
+}
+
+.app.minimal .theme-toggle,
+.app.minimal .sound-toggle {
+  border-color: #1D1D1D;
+}
+
+.app.minimal .theme-btn {
+  border-right-color: #1D1D1D;
+  background: #F8F8F8;
+  color: #1D1D1D;
+}
+
+.app.minimal .theme-btn:last-child {
+  border-right-color: transparent;
+}
+
+.app.minimal .theme-btn:hover {
+  background: #464646;
+  color: #F8F8F8;
+}
+
+.app.minimal .theme-btn.active {
+  background: #1D1D1D;
+  color: #F8F8F8;
+}
+
+.app.minimal .sound-btn {
+  background: #F8F8F8;
+  color: #1D1D1D;
+}
+
+.app.minimal .sound-btn:hover {
+  background: #464646;
+  color: #F8F8F8;
+}
+
+.app.minimal .mode-selector {
+  border-color: #1D1D1D;
+}
+
+.app.minimal .mode-btn {
+  border-right-color: #1D1D1D;
+  background: #F8F8F8;
+  color: #1D1D1D;
+}
+
+.app.minimal .mode-btn:last-child {
+  border-right-color: transparent;
+}
+
+.app.minimal .mode-btn:hover {
+  background: #464646;
+  color: #F8F8F8;
+}
+
+.app.minimal .mode-btn.active {
+  background: #1D1D1D;
+  color: #F8F8F8;
+}
+
+.app.minimal .timer-display {
+  background: #F8F8F8;
+  border-color: #1D1D1D;
+  border-width: 6px;
+  box-shadow: none;
+}
+
+.app.minimal .timer-display::before {
+  display: none;
+}
+
+.app.minimal .mode-label {
+  color: #1D1D1D;
+}
+
+.app.minimal .time {
+  color: #1D1D1D;
+  text-shadow: none;
+}
+
+.app.minimal .progress-bar {
+  background: #D9D9D9;
+}
+
+.app.minimal .progress-fill {
+  background: #1D1D1D;
+}
+
+.app.minimal .control-btn,
+.app.minimal .control-btn:last-child {
+  border-color: #1D1D1D;
+  background: #F8F8F8;
+  color: #1D1D1D;
+}
+
+.app.minimal .control-btn:hover {
+  background: #464646;
+  color: #F8F8F8;
+}
+
+.app.minimal .control-btn.pressed {
+  background: #1D1D1D;
+  color: #F8F8F8;
+}
+
+.app.minimal .sessions {
+  color: #1D1D1D;
+}
+
+.app.minimal .sessions-count {
+  border-bottom-color: #1D1D1D;
+}
+
+/* ===== Responsive ===== */
 
 @media (max-width: 768px) {
   .title {
@@ -431,11 +602,20 @@ body {
 
   .mode-btn {
     border-right: none;
-    border-bottom: 4px solid;
+    border-bottom: 3px solid #3d5a70;
   }
 
   .mode-btn:last-child {
     border-bottom: none;
+  }
+
+  .app.minimal .mode-btn {
+    border-bottom-color: #1D1D1D;
+    border-right: none;
+  }
+
+  .app.minimal .mode-btn:last-child {
+    border-bottom-color: transparent;
   }
 
   .controls {
@@ -443,12 +623,16 @@ body {
   }
 
   .control-btn {
-    border-right: 4px solid;
+    border-right: 3px solid #3d5a70;
     border-bottom: none;
   }
 
   .control-btn:last-child {
-    border-bottom: 4px solid;
+    border-bottom: 3px solid #3d5a70;
+  }
+
+  .app.minimal .control-btn {
+    border-color: #1D1D1D;
   }
 
   .container {
@@ -456,7 +640,8 @@ body {
     padding-top: 5rem;
   }
 
-  .dark-mode-toggle {
+  .dark-mode-toggle,
+  .theme-toggle {
     top: 1rem;
     right: 1rem;
     grid-template-columns: auto auto;
@@ -491,7 +676,8 @@ body {
     font-size: 1.5rem;
   }
 
-  .dark-mode-toggle {
+  .dark-mode-toggle,
+  .theme-toggle {
     top: 0.75rem;
     right: 0.75rem;
   }
